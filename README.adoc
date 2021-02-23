@@ -12,9 +12,9 @@ service with Spring.
 == What You Will Build
 
 You will build a service that will accept HTTP GET requests at
-`http://localhost:8080/greeting`.
+`http://localhost:8080/units`.
 
-It will respond with a JSON representation of a greeting, as the following listing shows:
+It will respond with a JSON representation of a units, as the following listing shows:
 
 ====
 [source,json]
@@ -23,13 +23,13 @@ It will respond with a JSON representation of a greeting, as the following listi
 ----
 ====
 
-You can customize the greeting with an optional `name` parameter in the query string, as
+You can customize the units with an optional `name` parameter in the query string, as
 the following listing shows:
 
 ====
 [source,text]
 ----
-http://localhost:8080/greeting?name=User
+http://localhost:8080/units?name=User
 ----
 ====
 
@@ -85,9 +85,9 @@ Now that you have set up the project and build system, you can create your web s
 
 Begin the process by thinking about service interactions.
 
-The service will handle `GET` requests for `/greeting`, optionally with a `name` parameter
+The service will handle `GET` requests for `/units`, optionally with a `name` parameter
 in the query string. The `GET` request should return a `200 OK` response with JSON in the
-body that represents a greeting. It should resemble the following output:
+body that represents a units. It should resemble the following output:
 
 ====
 [source,json]
@@ -99,22 +99,22 @@ body that represents a greeting. It should resemble the following output:
 ----
 ====
 
-The `id` field is a unique identifier for the greeting, and `content` is the textual
-representation of the greeting.
+The `id` field is a unique identifier for the units, and `content` is the textual
+representation of the units.
 
-To model the greeting representation, create a resource representation class. To do so,
+To model the units representation, create a resource representation class. To do so,
 provide a plain old Java object with fields, constructors, and accessors for the `id` and
 `content` data, as the following listing (from
-`src/main/java/com/example/restservice/Greeting.java`) shows:
+`src/main/java/com/example/restservice/Units.java`) shows:
 
 [source,java]
 ----
-include::complete/src/main/java/com/example/restservice/Greeting.java[]
+include::complete/src/main/java/com/example/restservice/Units.java[]
 ----
 
 ====
 NOTE: This application uses the https://github.com/FasterXML/jackson[Jackson JSON] library to
-automatically marshal instances of type `Greeting` into JSON. Jackson is included by default by the web starter.
+automatically marshal instances of type `Units` into JSON. Jackson is included by default by the web starter.
 ====
 
 == Create a Resource Controller
@@ -122,36 +122,36 @@ automatically marshal instances of type `Greeting` into JSON. Jackson is include
 In Spring's approach to building RESTful web services, HTTP requests are handled by a
 controller. These components are identified by the
 https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/bind/annotation/RestController.html[`@RestController`]
-annotation, and the `GreetingController` shown in the following listing (from
-`src/main/java/com/example/restservice/GreetingController.java`) handles `GET` requests
-for `/greeting` by returning a new instance of the `Greeting` class:
+annotation, and the `UnitsController` shown in the following listing (from
+`src/main/java/com/example/restservice/UnitsController.java`) handles `GET` requests
+for `/units` by returning a new instance of the `Units` class:
 
 ====
 [source,java]
 ----
-include::complete/src/main/java/com/example/restservice/GreetingController.java[]
+include::complete/src/main/java/com/example/restservice/UnitsController.java[]
 ----
 ====
 
 This controller is concise and simple, but there is plenty going on under the hood. We
 break it down step by step.
 
-The `@GetMapping` annotation ensures that HTTP GET requests to `/greeting` are mapped to the `greeting()` method.
+The `@GetMapping` annotation ensures that HTTP GET requests to `/units` are mapped to the `units()` method.
 
 NOTE: There are companion annotations for other HTTP verbs (e.g. `@PostMapping` for POST). There is also a `@RequestMapping` annotation that they all derive from, and can serve as a synonym (e.g. `@RequestMapping(method=GET)`).
 
 `@RequestParam` binds the value of the query string parameter `name` into the `name`
-parameter of the `greeting()` method. If the `name` parameter is absent in the request,
+parameter of the `units()` method. If the `name` parameter is absent in the request,
 the `defaultValue` of `World` is used.
 
-The implementation of the method body creates and returns a new `Greeting` object with
+The implementation of the method body creates and returns a new `Units` object with
 `id` and `content` attributes based on the next value from the `counter` and formats the
-given `name` by using the greeting `template`.
+given `name` by using the units `template`.
 
 A key difference between a traditional MVC controller and the RESTful web service
 controller shown earlier is the way that the HTTP response body is created. Rather than
-relying on a view technology to perform server-side rendering of the greeting data to
-HTML, this RESTful web service controller populates and returns a `Greeting` object. The
+relying on a view technology to perform server-side rendering of the units data to
+HTML, this RESTful web service controller populates and returns a `Units` object. The
 object data will be written directly to the HTTP response as JSON.
 
 This code uses Spring
@@ -160,11 +160,11 @@ annotation, which marks the class as a controller where every method returns a d
 object instead of a view. It is shorthand for including both `@Controller` and
 `@ResponseBody`.
 
-The `Greeting` object must be converted to JSON. Thanks to Spring's HTTP message converter
+The `Units` object must be converted to JSON. Thanks to Spring's HTTP message converter
 support, you need not do this conversion manually. Because
 https://github.com/FasterXML/jackson[Jackson 2] is on the classpath, Spring's
 https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html[`MappingJackson2HttpMessageConverter`]
-is automatically chosen to convert the `Greeting` instance to JSON.
+is automatically chosen to convert the `Units` instance to JSON.
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/spring-boot-application-new-path.adoc[]
 
@@ -177,7 +177,7 @@ Logging output is displayed. The service should be up and running within a few s
 
 == Test the Service
 
-Now that the service is up, visit `http://localhost:8080/greeting`, where you should see:
+Now that the service is up, visit `http://localhost:8080/units`, where you should see:
 
 ====
 [source,json]
@@ -187,7 +187,7 @@ Now that the service is up, visit `http://localhost:8080/greeting`, where you sh
 ====
 
 Provide a `name` query string parameter by visiting
-`http://localhost:8080/greeting?name=User`. Notice how the value of the `content`
+`http://localhost:8080/units?name=User`. Notice how the value of the `content`
 attribute changes from `Hello, World!` to `Hello, User!`, as the following listing shows:
 
 ====
@@ -197,12 +197,12 @@ attribute changes from `Hello, World!` to `Hello, User!`, as the following listi
 ----
 ====
 
-This change demonstrates that the `@RequestParam` arrangement in `GreetingController` is
+This change demonstrates that the `@RequestParam` arrangement in `UnitsController` is
 working as expected. The `name` parameter has been given a default value of `World` but
 can be explicitly overridden through the query string.
 
 Notice also how the `id` attribute has changed from `1` to `2`. This proves that you are
-working against the same `GreetingController` instance across multiple requests and that
+working against the same `UnitsController` instance across multiple requests and that
 its `counter` field is being incremented on each call as expected.
 
 == Summary
