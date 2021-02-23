@@ -37,16 +37,16 @@ public class UnitsControllerTests {
 	@Test
 	public void noParamUnitsShouldReturnDefaultMessage() throws Exception {
 
-		this.mockMvc.perform(get("/units")).andDo(print()).andExpect(status().isOk())
-				.andExpect(jsonPath("$.content").value("Hello, World!"));
+		this.mockMvc.perform(get("/units/si")).andDo(print()).andExpect(status().isOk())
+				.andExpect(jsonPath("$.unitName").value("(rad/s)"));
 	}
 
 	@Test
 	public void paramUnitsShouldReturnTailoredMessage() throws Exception {
 
-		this.mockMvc.perform(get("/units").param("name", "Spring Community"))
+		this.mockMvc.perform(get("/units/si").param("units", "(rad/s)"))
 				.andDo(print()).andExpect(status().isOk())
-				.andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+				.andExpect(jsonPath("$.unitName").value("(rad/s)"));
 	}
 
 }
