@@ -15,7 +15,8 @@ RUN mvn install
 FROM openjdk
 
 # Copy our static executable
-COPY --from=builder /Users/zhuoli/Projects/java/gs-rest-service/complete/target /Projects/java/gs-rest-service/complete/target
-WORKDIR /Users/zhuoli/Projects/java/gs-rest-service/complete/target
+WORKDIR /Projects/java/gs-rest-service/complete/target
+COPY --from=builder /Users/zhuoli/Projects/java/gs-rest-service/complete/target/*.jar /Projects/java/gs-rest-service/complete/target
 
-ENTRYPOINT ["java -jar rest-service-0.0.1-SNAPSHOT.jar"]
+# ENTRYPOINT ["java -jar rest-service-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["ls"]
