@@ -4,6 +4,7 @@ LABEL name="CitrineInformaticsTechChallenge/zhuoli" \
     maintainer="zhuoliseattle@gmail.com" \
     type="lean"
 
+# TODO: Change this path to where your own project path
 WORKDIR /Users/zhuoli/Projects/java/gs-rest-service/complete
 
 COPY . .
