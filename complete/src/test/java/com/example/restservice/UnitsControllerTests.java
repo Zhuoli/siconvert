@@ -48,5 +48,4 @@ public class UnitsControllerTests {
 				.andDo(print()).andExpect(status().isOk())
 				.andExpect(jsonPath("$.unitName").value("(rad/s)"));
 	}
-
 }
