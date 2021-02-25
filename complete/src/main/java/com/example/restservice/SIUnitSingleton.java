@@ -31,8 +31,9 @@ public class SIUnitSingleton {
     public SIUnit convert2SIUnit(String unitName){
         SIUnit siunit = this.convertMap.get(unitName);
         if (siunit==null){
-            return new SIUnit("Unknown","-1")
+            siunit = new SIUnit("Unknown","-1");
         }
+        return siunit;
     }
 
     public static SIUnitSingleton getInstance(){
