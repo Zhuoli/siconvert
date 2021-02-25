@@ -39,7 +39,7 @@ public class SIUnitSingleton {
         return instance;
     }
     public double calculate(String s) {
-        // A more complex expression showing support for unary operators.
+        // Eval : https://github.com/uklimaschewski/EvalEx
         BigDecimal result = new Expression(s).setPrecision(14).eval(); // -0.35
         return result.doubleValue();
     }
