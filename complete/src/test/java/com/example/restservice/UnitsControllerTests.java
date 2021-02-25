@@ -48,4 +48,20 @@ public class UnitsControllerTests {
 				.andDo(print()).andExpect(status().isOk())
 				.andExpect(jsonPath("$.unitName").value("(rad/s)"));
 	}
+
+	@Test
+	public void paramUnitsShouldReturnUnknown() throws Exception {
+
+		this.mockMvc.perform(get("/units/si").param("units", "(whatever)"))
+				.andDo(print()).andExpect(status().isOk())
+				.andExpect(jsonPath("$.unitName").value("(Unknown)"));
+	}
+
+	@Test
+	public void paramUnitsShouldReturnUnknown2() throws Exception {
+
+		this.mockMvc.perform(get("/units/si").param("units", "(whatever/minute)"))
+				.andDo(print()).andExpect(status().isOk())
+				.andExpect(jsonPath("$.unitName").value("(Unknown/s)"));
+	}
 }
