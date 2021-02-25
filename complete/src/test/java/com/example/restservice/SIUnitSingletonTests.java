@@ -54,21 +54,28 @@ public class SIUnitSingletonTests {
     @Test                                               
     @DisplayName("multiplication and division with nested parenthesis should work")   
     public void testMultiplyAndDivision3() {
-        assertEquals(0.6666666666666666, siUnitSingleton.calculate("(2/3)"),      
-        "(2/3) should be 0.6666666666666666");          
+        assertEquals(0.66666666666667, siUnitSingleton.calculate("(2/3)"),      
+        "(2/3) should be 0.66666666666667");          
     }
 
     @Test                                               
     @DisplayName("multiplication and division with nested parenthesis should work")   
     public void testMultiplyAndDivision4() {
-        assertEquals(0.3333333333333333, siUnitSingleton.calculate("(2/3)/2"),      
-        "(2/3)/2 should be 0.3333333333333333");          
+        assertEquals(0.33333333333334, siUnitSingleton.calculate("(2/3)/2"),      
+        "(2/3)/2 should be 0.33333333333334");          
     }
 
     @Test                                               
     @DisplayName("multiplication and division with nested parenthesis should work")   
     public void testMultiplyAndDivision5() {
-        assertEquals(0.22222222222222222, siUnitSingleton.calculate("(2*4/3)/(2*3)/2"),      
-        "(2*4/3)/(2*3)/2 should be 0.22222222222222222");          
+        assertEquals(0.22222222222223, siUnitSingleton.calculate("(2*4/3)/(2*3)/2"),      
+        "(2*4/3)/(2*3)/2 should be 0.22222222222223");          
+    }
+
+    @Test                                               
+    @DisplayName("multiplication and division with PI should work")   
+    public void testPI() {
+        assertEquals(0.00029088820866572, siUnitSingleton.calculate("PI/180/60"),      
+        "PI/180/60 should be 0.00029088820866572");          
     }
 }

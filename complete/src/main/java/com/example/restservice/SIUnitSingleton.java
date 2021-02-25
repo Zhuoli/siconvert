@@ -1,9 +1,10 @@
 package com.example.restservice;
 
+import java.math.BigDecimal;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
+import com.udojava.evalex.Expression;
 
 public class SIUnitSingleton {
     private static SIUnitSingleton instance =null;
@@ -32,40 +33,8 @@ public class SIUnitSingleton {
         return instance;
     }
     public double calculate(String s) {
-        double l2 = 1;
-        int o2 = 1;
-
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-
-            if (Character.isDigit(c)) {
-                int num = c - '0';
-
-                while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) {
-                    num = num * 10 + (s.charAt(++i) - '0');
-                }
-
-                l2 = (o2 == 1 ? l2 * num : l2 / num);
-
-            } else if (c == '(') {
-                int j = i;
-
-                for (int cnt = 0; i < s.length(); i++) {
-                    if (s.charAt(i) == '(') cnt++;
-                    if (s.charAt(i) == ')') cnt--;
-                    if (cnt == 0) break;
-                }
-
-                double num = calculate(s.substring(j + 1, i));
-
-                l2 = (o2 == 1 ? l2 * num : l2 / num);
-
-            } else if (c == '*' || c == '/') {
-                o2 = (c == '*' ? 1 : -1);
-
-            } 
-        }
-
-        return l2;
+        // A more complex expression showing support for unary operators.
+        BigDecimal result = new Expression(s).setPrecision(14).eval(); // -0.35
+        return result.doubleValue();
     }
 }
