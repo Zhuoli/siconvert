@@ -3,7 +3,7 @@
 # Requirement: Java11, Maven, Docker
 
 ## Build docker image and run:  
-1. Replace "/Users/zhuoli/Projects/java/gs-rest-service/complete" to "{your project location}/gs-rest-service/complete" in complete/Dockerfile
+1. Update DockerFile: Replace "/Users/zhuoli/Projects/java/gs-rest-service/complete" to "{your project location}/gs-rest-service/complete" in complete/Dockerfile
 1. cd ./complete
 1. make image
 1. make run
