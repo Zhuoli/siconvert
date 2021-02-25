@@ -29,7 +29,10 @@ public class SIUnitSingleton {
     }
 
     public SIUnit convert2SIUnit(String unitName){
-        return this.convertMap.get(unitName);
+        SIUnit siunit = this.convertMap.get(unitName);
+        if (siunit==null){
+            return new SIUnit("Unknown","-1")
+        }
     }
 
     public static SIUnitSingleton getInstance(){
