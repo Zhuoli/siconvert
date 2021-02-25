@@ -3,10 +3,10 @@ package com.example.restservice;
 public class SIUnit {
 
 	private final String unitName;
-	private final double siConversion;
+	private final String siConversion;
 
 
-	public SIUnit(String unitName, double siConversion) {
+	public SIUnit(String unitName, String siConversion) {
 		this.unitName = unitName;
 		this.siConversion=siConversion;
 	}
@@ -15,7 +15,7 @@ public class SIUnit {
 		return unitName;
 	}
 
-	public double getsiConversion(){
+	public String getsiConversion(){
 		return siConversion;
 	}
 }
