@@ -25,6 +25,13 @@ GET /units/si?units=(degree/minute)
       "unit_name": (rad/s),
       "multiplication_factor": 2.9088820866572E-4
 }
+
+GET /units/si?units=(ha*°)
+
+{
+      "unit_name": (m2*rad),
+      "multiplication_factor": 174.53292519943
+}
 ```
 
 # Requirement: Java11, Maven, Docker
