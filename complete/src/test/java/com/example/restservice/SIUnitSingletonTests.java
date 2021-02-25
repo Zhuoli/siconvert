@@ -50,4 +50,25 @@ public class SIUnitSingletonTests {
         assertEquals(24, siUnitSingleton.calculate("(2*8/(1*4))/(1*2)*(3*4)"),      
         "(2*8/(1*4))/(1*2)*(3*4) should be 24");          
     }
+
+    @Test                                               
+    @DisplayName("multiplication and division with nested parenthesis should work")   
+    public void testMultiplyAndDivision3() {
+        assertEquals(0.6666666666666666, siUnitSingleton.calculate("(2/3)"),      
+        "(2/3) should be 0.6666666666666666");          
+    }
+
+    @Test                                               
+    @DisplayName("multiplication and division with nested parenthesis should work")   
+    public void testMultiplyAndDivision4() {
+        assertEquals(0.3333333333333333, siUnitSingleton.calculate("(2/3)/2"),      
+        "(2/3)/2 should be 0.3333333333333333");          
+    }
+
+    @Test                                               
+    @DisplayName("multiplication and division with nested parenthesis should work")   
+    public void testMultiplyAndDivision5() {
+        assertEquals(0.22222222222222222, siUnitSingleton.calculate("(2*4/3)/(2*3)/2"),      
+        "(2*4/3)/(2*3)/2 should be 0.22222222222222222");          
+    }
 }
