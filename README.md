@@ -13,3 +13,8 @@
 1. mvn install
 1. cd ./target 
 1. java -jar rest-service-0.0.1-SNAPSHOT.jar
+
+
+## Run UnitTest
+1. cd ./complete
+1. mvn install
